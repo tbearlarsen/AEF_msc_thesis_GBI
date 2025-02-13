@@ -9,7 +9,7 @@ gspc = yf.Ticker("^GSPC")
 sp500 = gspc.history(period="max", interval="1wk")
 
 
-"""#EXPLORE THE DATA
+#EXPLORE THE DATA
 sp500.head()
 sp500.info()
 sp500.describe()
@@ -26,7 +26,7 @@ plt.figure(figsize=(10,6))
 plt.plot(sp500.index, sp500['Close'],label="S&P 500")
 plt.xlabel("Date")
 plt.ylabel("Close Price")
-plt.show()"""
+plt.show()
 
 #Separate data
 close = sp500['Close']
