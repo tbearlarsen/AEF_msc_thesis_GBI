@@ -387,6 +387,7 @@ print(df_aggregate.to_string(index=False))
 
 
 # %% [markdown]
+# %%
 # # (Continuing from the end of your "no mean var" script...)
 # # Step 4: Mean-Variance Frontier Construction
 
@@ -445,6 +446,7 @@ plt.grid(alpha=0.3)
 plt.show()
 
 # %% [markdown]
+# %%
 # ### Identify 'last point' on the frontier (gamma = 0.01) and store it
 
 gamma_small = 0.01
@@ -465,6 +467,7 @@ last_weights = last_res.x if last_res.success else starting_weights_mv
 last_m = mean_f(last_weights, return_vector)
 
 # %% [markdown]
+# %%
 # ### Step 5: Compute Probability of Success for Each Goal Using Mean-Variance "Fallback"
 
 # In R, we built these arrays:
@@ -556,6 +559,7 @@ for i, alloc in enumerate(goal_allocation):
         )
 
 # %% [markdown]
+# %%
 # ### Step 6: Across-Goal Allocation (Mean-Variance Version)
 # We reuse the same `sim_goal_weights` from before but compute a new utility: `utility_mv`.
 
@@ -573,6 +577,7 @@ print("Optimal Across-Goal Allocation (Mean-Variance Version):")
 print(optimal_goal_weights_mv)
 
 # %% [markdown]
+# %%
 # ### Step 7: Visualize the Results for the Mean-Variance Subportfolios
 # For instance, let's plot Goal A's subportfolio weights under the mean-variance approach.
 
@@ -593,6 +598,7 @@ plt.show()
 # %% [markdown]
 # ### Step 8: Compare Probability of Achievement (No-Mean-Var vs. Mean-Var) for Goal A
 # We'll make a simple line plot of `phi_A` and `mv_phi_A` across the range of allocations.
+# %%
 
 plt.figure(figsize=(8, 5))
 plt.plot(goal_allocation * 100, phi_A, label="Goals-Based Only", linewidth=2)
