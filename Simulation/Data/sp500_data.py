@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 gspc = yf.Ticker("^GSPC")
 
 # Retrieve the maximum available historical data with weekly intervals
-sp500 = gspc.history(period="max", interval="1wk")
+sp500 = gspc.history(period="max", interval="1mo")
 
 
 #EXPLORE THE DATA
@@ -15,10 +15,10 @@ sp500.info()
 sp500.describe()
 sp500.isnull().sum()
 
-# Remove timezone information from the datetime index
+#Remove timezone information from the datetime index
 sp500.index = sp500.index.tz_localize(None)
 
-# Write the DataFrame to an Excel file
+#Write the DataFrame to an Excel file
 sp500.to_excel("sp500.xlsx")
 
 #Visulaise the data

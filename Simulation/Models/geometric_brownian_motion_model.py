@@ -87,22 +87,23 @@ class GBMSimulator:
 
 
 if __name__ == "__main__":
-    # Example: Load data for an asset.
-    # For instance, if you have a CSV file with asset prices:
-    # prices = pd.read_csv("asset_prices.csv", index_col=0, parse_dates=True)["Close"]
-    # Here we assume you have imported 'prices' from a module for SP500 as before.
+    """
+    Example: Use the model to simulate S&P500 index prices.
+    """
+
+    #Load the data from a module or file, and run the simulation.
     from Simulation.Data.sp500_data import close as prices
 
-    # Check that the price data is not empty
+    #Check that the price data is loaded correctly
     if prices.empty:
         raise ValueError("Price data is empty or not loaded correctly.")
 
-    # Create an instance of the simulator using the price data for any asset.
+    #Create an instance of the simulator using the price data.
     simulator = GBMSimulator(prices)
 
-    # Run the simulation for 45 years with 10,000 Monte Carlo paths
+    #Run the simulation for 45 years with 10,000 Monte Carlo paths.
     simulated_prices = simulator.simulate_gbm(num_years=45, num_paths=10000)
 
-    # Plot a few sample paths
+    #Plot a few sample paths
     simulator.plot_simulation(simulated_prices, num_paths_to_plot=10,
                               title="Monte Carlo Simulation of Asset Returns using GBM")
