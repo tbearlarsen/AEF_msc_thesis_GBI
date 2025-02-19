@@ -101,7 +101,8 @@ class VasicekModel:
 
 
 if __name__ == "__main__":
-    data_file = r"/Users/osito/Library/CloudStorage/OneDrive-CBS-CopenhagenBusinessSchool/Masters/3. Semester/Library/AEF_msc_thesis_GBI/Simulation/Data/short_rate.xlsx"
+    #data_file = r"/Users/osito/Library/CloudStorage/OneDrive-CBS-CopenhagenBusinessSchool/Masters/3. Semester/Library/AEF_msc_thesis_GBI/Simulation/Data/short_rate.xlsx"
+    data_file = r"C:\Users\thorb\Documents\Github Repositories\AEF_msc_thesis_GBI\Simulation\Data\short_rate.xlsx"
     model = VasicekModel(data_file)
     model.estimate_params()
 

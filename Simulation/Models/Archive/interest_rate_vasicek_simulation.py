@@ -4,7 +4,8 @@ import statsmodels.api as sm
 import matplotlib.pyplot as plt
 
 
-rates = pd.read_excel(r"/Users/osito/Library/CloudStorage/OneDrive-CBS-CopenhagenBusinessSchool/Masters/3. Semester/Library/AEF_msc_thesis_GBI/Simulation/Data/10YBond.xlsx", parse_dates=[0], index_col=0)
+#rates = pd.read_excel(r"/Users/osito/Library/CloudStorage/OneDrive-CBS-CopenhagenBusinessSchool/Masters/3. Semester/Library/AEF_msc_thesis_GBI/Simulation/Data/10YBond.xlsx", parse_dates=[0], index_col=0)
+rates=pd.read_excel(r"C:\Users\thorb\Documents\Github Repositories\AEF_msc_thesis_GBI\Simulation\Data\10YBond.xlsx", parse_dates=[0], index_col=0)
 rates.columns = ["interest_rate"]
 
 
