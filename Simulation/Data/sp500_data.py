@@ -8,6 +8,12 @@ gspc = yf.Ticker("^GSPC")
 # Retrieve the maximum available historical data with weekly intervals
 sp500 = gspc.history(period="max", interval="1mo")
 
+"""ticker = "^GSPC"
+start_date = "2010-01-01"
+end_date = "2025-01-01"
+freq = "1mo"
+sp500 = yf.download(ticker, start=start_date, end=end_date, interval=freq)"""
+
 
 #EXPLORE THE DATA
 sp500.head()
@@ -18,17 +24,17 @@ sp500.isnull().sum()
 #Remove timezone information from the datetime index
 sp500.index = sp500.index.tz_localize(None)
 
-#Write the DataFrame to an Excel file
-sp500.to_excel("sp500.xlsx")
+"""#Write the DataFrame to an Excel file
+sp500.to_excel("sp500.xlsx")"""
 
-#Visulaise the data
+"""#Visulaise the data
 plt.figure(figsize=(10,6))
 plt.plot(sp500.index, sp500['Close'],label="S&P 500")
 plt.xlabel("Date")
 plt.ylabel("Close Price")
-plt.show()
+plt.show()"""
 
 #Separate data
-close = sp500['Close']
-close = close[close.index >= '1997-01-01']
+adj_close = sp500['Adj Close']
+adj_close = adj_close[adj_close.index >= '1997-01-01']
 

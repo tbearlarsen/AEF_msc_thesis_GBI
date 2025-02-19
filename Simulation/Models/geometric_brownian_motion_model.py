@@ -3,16 +3,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 class GBMSimulator:
-    def __init__(self, prices, time_unit='weekly'):
+    def __init__(self, prices, ppa=52):
         """
         Initialize the simulator with asset price data.
 
         Parameters:
             prices (pd.Series): Price series for the asset.
-            time_unit (str): Frequency of the data ('weekly' assumed by default).
+            ppa (str): Periods per annum ('weekly' assumed by default).
         """
         self.prices = prices
-        self.time_unit = time_unit
+        self.ppa = ppa
         self.log_returns = self.calculate_log_returns()
         (self.mu, self.sigma,
          self.mu_annual, self.sigma_annual) = self.estimate_parameters()
@@ -34,9 +34,10 @@ class GBMSimulator:
         """
         mu = self.log_returns.mean()
         sigma = self.log_returns.std()
-        # Annualize parameters (assuming weekly data)
-        mu_annual = mu * 52
-        sigma_annual = sigma * np.sqrt(52)
+
+        #Annualize parameters
+        mu_annual = mu * self.ppa
+        sigma_annual = sigma * np.sqrt(self.ppa)
 
         print(f"Estimated weekly drift: {mu:.4f}, Annual drift: {mu_annual:.4f}")
         print(f"Estimated weekly volatility: {sigma:.4f}, Annual volatility: {sigma_annual:.4f}")
@@ -53,8 +54,8 @@ class GBMSimulator:
         Returns:
             np.ndarray: Simulated asset prices with shape (num_steps+1, num_paths).
         """
-        dt = 1 / 52  # Weekly time step
-        num_steps = int(52 * num_years)
+        dt = 1 / self.ppa  # Weekly time step
+        num_steps = int(self.ppa * num_years)
         S0 = self.prices.iloc[-1]
 
         # Vectorized simulation: generate increments for the log-price process
@@ -99,7 +100,7 @@ if __name__ == "__main__":
         raise ValueError("Price data is empty or not loaded correctly.")
 
     #Create an instance of the simulator using the price data.
-    simulator = GBMSimulator(prices)
+    simulator = GBMSimulator(prices,52)
 
     #Run the simulation for 45 years with 10,000 Monte Carlo paths.
     simulated_prices = simulator.simulate_gbm(num_years=45, num_paths=10000)
