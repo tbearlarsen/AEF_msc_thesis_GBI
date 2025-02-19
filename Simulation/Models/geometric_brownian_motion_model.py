@@ -54,7 +54,7 @@ class GBMSimulator:
         Returns:
             np.ndarray: Simulated asset prices with shape (num_steps+1, num_paths).
         """
-        dt = 1 / self.ppa  # Weekly time step
+        dt = 1 / self.ppa
         num_steps = int(self.ppa * num_years)
         S0 = self.prices.iloc[-1]
 
