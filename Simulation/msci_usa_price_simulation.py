@@ -1,6 +1,6 @@
 import pandas as pd
 import yfinance as yf
-from Simulation.Models.geometric_brownian_motion_model import GBMSimulator
+from Models.geometric_brownian_motion_model import GBMSimulator
 
 def main():
     ticker = "XD9U.DE"

@@ -1,5 +1,5 @@
 import pandas as pd
-from Simulation.Models.vasicek_model import VasicekModelExtended
+from Models.vasicek_model import VasicekModelExtended
 
 def main():
     data_file = r"C:\Users\thorb\Documents\Github Repositories\AEF_msc_thesis_GBI\Simulation\Data\short_rate.xlsx"
